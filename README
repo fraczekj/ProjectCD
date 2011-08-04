@@ -52,3 +52,10 @@ public interface RuleConstants
 
 We were unable to get it working.
 
+Lab 6
+Semantics errors:
+Our program will catch if a person puts in more than one command and one argument.
+
+Test case:
+Connect 255.255.255.255:80 vs Connect 255.255.255.255 Port 80
+

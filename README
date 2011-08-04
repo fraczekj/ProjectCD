@@ -1,1 +1,54 @@
-Lab 4: Revision xx
+Lab 4 Revision 2 
+Was worked on by both John and I. 
+The file titled AST.java contains lab 4.
+
+Lab 5
+Worked on by John and I
+Language Grammar:
+Program -> stmt
+Stmt->stmt-type|Stmt stmt-type
+Stmt-type->command
+Command-> “CONNECT” arg|”READ ALL DATA” arg|”USE DATABASE” arg|”PUT INTO” arg|”READ ALL DATA FROM” arg|”PRESENT WITH FORMAT” arg
+Arg->id|NULL
+Id->[a-z A-Z 0-9 ‘.’ ‘:’ ‘@’]*
+
+Valid Code:
+CONNECT 255.255.255.255:80
+READ ALL DATA
+USE DATABASE testdb@localhost
+PUT INTO testdb
+READ ALL DATA FROM testdb.table
+PRESENT WITH FORMAT x
+
+Invalid Code:
+Any other commands not listed above
+
+Generated Code using GOLD Parser:
+public interface SymbolConstants 
+{
+   final int SYMBOL_EOF           =  0;  // (EOF)
+   final int SYMBOL_ERROR         =  1;  // (Error)
+   final int SYMBOL_WHITESPACE    =  2;  // (Whitespace)
+   final int SYMBOL_LINE          =  3;  // Line
+   final int SYMBOL_NEW           =  4;  // New
+   final int SYMBOL_STRING        =  5;  // String
+   final int SYMBOL_ARG           =  6;  // <arg>
+   final int SYMBOL_COMMAND       =  7;  // <command>
+   final int SYMBOL_PROGRAM       =  8;  // <Program>
+   final int SYMBOL_STMTS         =  9;  // <Stmts>
+   final int SYMBOL_STMTMINUSTYPE = 10;  // <Stmt-type>
+};
+
+public interface RuleConstants
+{
+   final int RULE_PROGRAM        = 0;  // <Program> ::= <Stmts>
+   final int RULE_STMTS          = 1;  // <Stmts> ::= <Stmt-type>
+   final int RULE_STMTS2         = 2;  // <Stmts> ::= <Stmts> <Stmt-type>
+   final int RULE_STMTTYPE       = 3;  // <Stmt-type> ::= <command>
+   final int RULE_COMMAND_STRING = 4;  // <command> ::= String <arg>
+   final int RULE_ARG_STRING     = 5;  // <arg> ::= String
+   final int RULE_ARG_NEW_LINE   = 6;  // <arg> ::= New Line
+};
+
+We were unable to get it working.
+

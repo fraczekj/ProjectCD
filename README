@@ -56,6 +56,23 @@ Lab 6
 Semantics errors:
 Our program will catch if a person puts in more than one command and one argument.
 
+public class SemanticAnalysisVisitor extends Visitor
+{
+	public void visitCommandError (CommandError n)
+	{
+		System.out.println("ERROR: You cannot have more than one command per line.");
+	}
+	public void visitArguError (ArguError n)
+	{
+		System.out.println("ERROR: You cannot have more than one argument per line.");
+	}
+	public void visitDoubleError (DoubleError n)
+	{
+		System.out.println("ERROR: You cannot have more than one command and more than one argument per line.");
+	}
+}
+	
+
 Test case:
 Connect 255.255.255.255:80 vs Connect 255.255.255.255 Port 80
 
